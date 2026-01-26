@@ -1,0 +1,14 @@
+.name-text {
+    color: #2A2927;
+    font-family: "Caveat Brush", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3rem;
+  }
+  
+.body-text {
+    color: #2A2927;
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+}
