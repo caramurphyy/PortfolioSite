@@ -2,12 +2,6 @@ import {
     CardFlip,
     CardFlipFront,
     CardFlipBack,
-    CardFlipHeader,
-    CardFlipFooter,
-    CardFlipTitle,
-    CardFlipDescription,
-    CardFlipContent,
-    CardFlipAction,
   } from "@/components/ui/card-flip";
   import { CardTilt, CardTiltContent } from "@/components/ui/card-tilt";
   

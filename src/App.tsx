@@ -7,7 +7,6 @@ import DrawingCanvas from './components/drawing/DrawingCanvas'
 import paintbrushIcon from '@/assets/Icons/paintbrush.png'
 
 import Christmas2024 from '@/assets/PhysicalArt/Christmas2024.JPG'
-import ChristmasFromLivingRoom from '@/assets/PhysicalArt/ChristmasFromLivingRoom.PNG'
 import FineChina from '@/assets/PhysicalArt/FineChina.jpg'
 import Flute from '@/assets/PhysicalArt/Flute.JPG'
 import Forest from '@/assets/PhysicalArt/Forest.jpg'

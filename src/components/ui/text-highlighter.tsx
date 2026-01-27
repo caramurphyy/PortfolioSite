@@ -76,7 +76,7 @@ const TextHighlighter: React.FC<TextHighlighterProps> = ({
   ) => {
     const scaleX = targetWidth / originalWidth;
     const scaleY = targetHeight / originalHeight;
-    return pathData.replace(/([ML])\s*(\d+(?:\.\d+)?),(\d+(?:\.\d+)?)/g, (match, command, x, y) => {
+    return pathData.replace(/([ML])\s*(\d+(?:\.\d+)?),(\d+(?:\.\d+)?)/g, (_match, command, x, y) => {
       const scaledX = parseFloat(x) * scaleX;
       const scaledY = parseFloat(y) * scaleY;
       return `${command}${scaledX.toFixed(1)},${scaledY.toFixed(1)}`;

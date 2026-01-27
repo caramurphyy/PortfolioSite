@@ -143,7 +143,7 @@ const WavyButton = React.forwardRef<HTMLButtonElement, WavyButtonProps>(
     ref
   ) => {
     const [isHovered, setIsHovered] = React.useState(false);
-    const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+    const timeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
     const colors = variantColors[variant ?? "default"];
     const Component: React.ElementType = asChild ? Slot : motion.button;
 
