@@ -16,39 +16,51 @@ function CardFlip({
   return (
     <div
       className={cn("relative w-full cursor-pointer", className)}
-      style={{ perspective: "1000px" }}
+      style={{ 
+        perspective: "1000px",
+        WebkitPerspective: "1000px"
+      }}
       onClick={() => setIsFlipped(!isFlipped)}
       {...props}
     >
       <motion.div
         className="relative w-full"
         initial={false}
-        animate={{ rotateY: isFlipped ? -180 : 0 }}
+        animate={{ rotateY: isFlipped ? 180 : 0 }}
         transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-        style={{ transformStyle: "preserve-3d" }}
+        style={{ 
+          transformStyle: "preserve-3d",
+          WebkitTransformStyle: "preserve-3d"
+        }}
       >
-        <div 
+        {/* Front */}
+        <motion.div 
           className="w-full" 
           style={{ 
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
-            transformStyle: "preserve-3d"
+            transform: "translateZ(1px)"
           }}
+          animate={{ opacity: isFlipped ? 0 : 1 }}
+          transition={{ duration: 0.3 }}
         >
           {front}
-        </div>
+        </motion.div>
 
-        <div
+        {/* Back */}
+        <motion.div
           className="absolute inset-0 w-full h-full"
           style={{
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
-            transform: "rotateY(-180deg)",
-            transformStyle: "preserve-3d"
+            transform: "rotateY(180deg) translateZ(1px)",
+            WebkitTransform: "rotateY(180deg) translateZ(1px)"
           }}
+          animate={{ opacity: isFlipped ? 1 : 0 }}
+          transition={{ duration: 0.3, delay: isFlipped ? 0.3 : 0 }}
         >
           {back}
-        </div>
+        </motion.div>
       </motion.div>
     </div>
   );
