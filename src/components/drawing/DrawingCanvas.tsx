@@ -94,7 +94,7 @@ function DrawingCanvas() {
   };
 
   return (
-    <div className="w-full min-h-screen flex flex-col items-center justify-center p-8 md:p-16 gap-4">
+    <div className="w-full min-h-screen flex flex-col items-center justify-center px-4 pt-16 pb-8 md:p-16 gap-4">
       <style>{`
         .imageEditorContainer {
           width: 100% !important;
