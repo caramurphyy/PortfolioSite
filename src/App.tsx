@@ -126,6 +126,8 @@ function App() {
                   src={nft}
                   alt={`Golden Goose NFT ${index + 1}`}
                   className="w-full rounded-lg"
+                  loading="lazy"
+                  decoding="async"
                 />
               ))}
             </div>

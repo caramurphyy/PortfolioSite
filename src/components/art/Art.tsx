@@ -20,7 +20,7 @@ function Art({ src, alt, title, year, description, medium }: ArtProps) {
         <CardFlipFront>
         <CardTilt tiltMaxAngle={15} scale={1.05}>
       <CardTiltContent className="relative rounded-2xl shadow-xl">
-      <img src={src} alt={alt} className="w-full rounded-xl" />
+      <img src={src} alt={alt} className="w-full rounded-xl" loading="lazy" decoding="async" />
       </CardTiltContent>
     </CardTilt>
         </CardFlipFront>
