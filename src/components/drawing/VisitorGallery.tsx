@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import DOMPurify from 'dompurify';
 import { getDrawings } from '@/lib/supabase';
 
 interface Drawing {
@@ -59,7 +60,7 @@ function VisitorGallery() {
           >
             <div 
               className="drawing-container aspect-square p-2 flex items-center justify-center"
-              dangerouslySetInnerHTML={{ __html: drawing.svg_data }}
+              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(drawing.svg_data) }}
             />
             <div className="px-3 py-2 bg-[#EAE0CC]">
               <p className="text-sm font-medium text-black truncate">
