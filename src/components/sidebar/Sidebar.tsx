@@ -1,10 +1,34 @@
 import { Info, Paintbrush, Shirt, Pencil, ChevronLeft, ChevronRight } from "lucide-react";
 
 const navItems = [
-  { id: "about", label: "about", Icon: Info },
-  { id: "art", label: "art", Icon: Paintbrush },
-  { id: "merch", label: "merch", Icon: Shirt },
-  { id: "design", label: "design", Icon: Pencil },
+  {
+    id: "about",
+    label: "about",
+    Icon: Info,
+    hoverBg: "hover:bg-[#EAE0CC]",
+    hoverText: "hover:text-[#2A2927]",
+  },
+  {
+    id: "art",
+    label: "art",
+    Icon: Paintbrush,
+    hoverBg: "hover:bg-white",
+    hoverText: "hover:text-[#ec573f]",
+  },
+  {
+    id: "merch",
+    label: "merch",
+    Icon: Shirt,
+    hoverBg: "hover:bg-[#053937]",
+    hoverText: "hover:text-white",
+  },
+  {
+    id: "design",
+    label: "design",
+    Icon: Pencil,
+    hoverBg: "hover:bg-[#e3ce78]",
+    hoverText: "hover:text-[#2A2927]",
+  },
 ] as const;
 
 interface SidebarProps {
@@ -34,13 +58,13 @@ function Sidebar({ expanded, onExpandedChange }: SidebarProps) {
       </button>
 
       <nav className="flex flex-1 flex-col items-center justify-center gap-1 px-2">
-        {navItems.map(({ id, label, Icon }) => (
+        {navItems.map(({ id, label, Icon, hoverBg, hoverText }) => (
           <button
             key={id}
             type="button"
             onClick={() => scrollTo(id)}
             title={label}
-            className="flex w-full items-center justify-center rounded-lg px-3 py-3 font-semibold transition-colors hover:bg-white/15"
+            className={`flex w-full items-center justify-center rounded-lg px-3 py-3 font-semibold transition-colors ${hoverBg} ${hoverText}`}
           >
             {expanded ? (
               <span className="truncate text-sm tracking-wide">{label}</span>
