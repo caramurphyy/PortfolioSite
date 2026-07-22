@@ -1,18 +1,17 @@
-import WavyButton from "@/components/ui/wavy-button";
-import PortfolioPhoto from "@/assets/PortfolioPhoto.svg";
+import PortfolioPic from "@/assets/PortfolioPic.png";
 
 function Contact() {
   return (
     <div className="flex flex-col items-center justify-start">
-      <img src={PortfolioPhoto} alt="Cara looking off to the side smiling in front of a painting in a museum in Budapest" className="w-100 hidden md:block" loading="lazy" decoding="async" />
-      <a href="https://www.instagram.com/caramurphyart?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">
-        <WavyButton variant="default" size="sm">
-          Contact
-        </WavyButton>
-      </a>
+      <img
+        src={PortfolioPic}
+        alt="Cara in a yellow top looking at the camera with a slight smile in a restaurant with ornate european detailing."
+        className="w-120 hidden md:block"
+        loading="lazy"
+        decoding="async"
+      />
     </div>
   );
 }
 
 export default Contact;
-

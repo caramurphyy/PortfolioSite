@@ -3,8 +3,7 @@ import './App.css'
 import Introduction from './components/introduction/Introduction'
 import Contact from './components/contact/Contact'
 import Art from './components/art/Art'
-import DrawingCanvas from './components/drawing/DrawingCanvas'
-import paintbrushIcon from '@/assets/Icons/paintbrush.png'
+import Sidebar from './components/sidebar/Sidebar'
 
 import Christmas2024 from '@/assets/PhysicalArt/Christmas2024.JPG'
 import FineChina from '@/assets/PhysicalArt/FineChina.jpg'
@@ -23,6 +22,11 @@ import SeattleEats from '@/assets/PhysicalArt/SeattleEats.jpg'
 import GouDanJan2026 from '@/assets/PhysicalArt/GouDanJan2026.jpg'
 import RainierPainting from '@/assets/PhysicalArt/RainierPainting.jpg'
 import GouacheGirls from '@/assets/PhysicalArt/GouacheGirls.jpg'
+
+import HyperspellMerch1 from '@/assets/Merch/HyperspellMerch1.png'
+import HyperspellMerch2 from '@/assets/Merch/HyperspellMerch2.png'
+import LopusMerch from '@/assets/Merch/LopusMerch.png'
+import ShellMerch2026 from '@/assets/Merch/ShellMerch2026.png'
 
 // Golden Goose NFT imports
 import nft1 from '@/assets/GoldenGooseNFT/1.png'
@@ -56,6 +60,13 @@ const goldenGooseNFTs = [
   nft17, nft18, nft19, nft20, nft21, nft22, nft23, nft24, nft25
 ]
 
+const merchItems = [
+  { src: HyperspellMerch1, alt: 'Hyperspell merchandise design 1' },
+  { src: HyperspellMerch2, alt: 'Hyperspell merchandise design 2' },
+  { src: LopusMerch, alt: 'Lopus merchandise design' },
+  { src: ShellMerch2026, alt: 'Shell merchandise design 2026' },
+]
+
 const artworks = [
   { id: 1, src: RainierPainting, alt: 'Rainier Painting', title: 'Commute Kairos', year: '2026', description: 'Everyday I would ride the bus home in Seattle in the fall, when sunset is perfectly around 5-6 pm, and look forward to the opportunity of sighting Mount Rainier as we crossed the Evergreen Point Bridge. Often, it was too cloudy, but I always made sure to sit on the left side of the bus and watch. This is my largest painting, a 30x40 inch.', medium: 'Acrylic' },
   { id: 2, src: GouDanJan2026, alt: 'Gou Dan Jan 2026', title: 'Shoveling Companion', year: '2026', description: 'On cold dark mornings when clearing freshly fallen snow, it sure is nice to have a companion who doesn\'t appear to feel the cold at all.', medium: 'Acrylic' },
@@ -77,47 +88,55 @@ const artworks = [
 ]
 
 function App() {
-  const [showCanvas, setShowCanvas] = useState(false);
+  const [sidebarExpanded, setSidebarExpanded] = useState(true);
 
   return (
     <div className="w-full min-h-screen bg-[#EAE0CC] relative">
-      {/* Paintbrush toggle button */}
-      <button
-        onClick={() => setShowCanvas(!showCanvas)}
-        className="fixed top-4 right-4 z-50 p-2 transition-all hover:scale-130"
-        aria-label={showCanvas ? "Back to portfolio" : "Open drawing canvas"}
-      >
-        <img src={paintbrushIcon} alt="Toggle drawing canvas" className="w-8 h-8 object-contain" />
-      </button>
+      <Sidebar expanded={sidebarExpanded} onExpandedChange={setSidebarExpanded} />
 
-      {showCanvas ? (
-        <DrawingCanvas />
-      ) : (
-        <>
+      <div
+        className={`transition-[padding] duration-300 ${
+          sidebarExpanded ? "pl-36" : "pl-14"
+        }`}
+      >
           {/* Intro/Contact section */}
-          <div className="flex flex-col md:flex-row gap-5 px-5 py-5 lg:px-50 lg:py-10">
+          <section id="about" className="flex flex-col md:flex-row gap-5 px-5 py-5 lg:px-20 lg:py-10 scroll-mt-4 bg-[#EAE0CC]">
             <div className="w-full md:w-1/2"><Introduction /></div>
             <div className="w-full md:w-1/2"><Contact/></div>
-          </div>
+          </section>
 
-          <div className="columns-2 md:columns-3 gap-2 md:gap-4 px-5 lg:px-10 py-5 [&>*]:mb-2 md:[&>*]:mb-4 [&>*]:break-inside-avoid bg-[#EC573F]">
-            {artworks.map((art) => (
-              <Art
-                key={art.id}
-                src={art.src}
-                alt={art.alt}
-                title={art.title}
-                year={art.year}
-                description={art.description}
-                medium={art.medium}
-              />
-            ))}
-          </div>
+          <Art artworks={artworks} />
 
-          {/* Golden Goose NFT Section */}
-          <div className="px-5 lg:px-10 py-10">
-            <p className="text-center max-w-3xl mx-auto mb-8 body-text">
-              Golden Goose was a cryptocurrency scavenger hunt that used poems as clues to reveal the coins in specific locations around a city with a NFT to match the neighborhood it was hidden in. I was commissioned to create the first collection of NFTs which was hidden in Boston's many vibrant neighborhoods.
+          {/* Merch section */}
+          <section id="merch" className="px-5 lg:px-20 py-16 scroll-mt-4 bg-[#053937]">
+            <h2 className="mb-4 text-center text-3xl font-semibold tracking-wide text-white [font-family:system-ui,Avenir,Helvetica,Arial,sans-serif]">
+              merch
+            </h2>
+            <p className="mx-auto mb-6 max-w-xl text-center body-text !text-white">
+              was commissioned to design merchandise for various companies and organizations.
+            </p>
+            <div className="mx-auto flex max-w-3xl flex-col mb-10">
+              {merchItems.map((item) => (
+                <figure key={item.alt}>
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    className="w-full rounded-2xl"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+              ))}
+            </div>
+          </section>
+
+          {/* Design / Golden Goose NFT Section */}
+          <section id="design" className="px-5 lg:px-20 py-10 scroll-mt-4 bg-[#e3ce78]">
+            <h2 className="mb-4 text-center text-3xl font-semibold tracking-wide text-[#213547] [font-family:system-ui,Avenir,Helvetica,Arial,sans-serif]">
+              design
+            </h2>
+            <p className="text-center max-w-3xl mx-auto mb-8 body-text text-[#213547]/opacity-80">
+              Golden Goose was a cryptocurrency scavenger hunt that used poems as clues to reveal the coins in specific locations around a city with a NFT to match the neighborhood it was hidden in. I was commissioned to create the first collection of NFTs in March of 2022 for Boston's many vibrant neighborhoods.
             </p>
             <div className="grid grid-cols-3 md:grid-cols-4 gap-2 md:gap-4">
               {goldenGooseNFTs.map((nft, index) => (
@@ -131,9 +150,8 @@ function App() {
                 />
               ))}
             </div>
-          </div>
-        </>
-      )}
+          </section>
+      </div>
     </div>
   )
 }
